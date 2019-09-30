@@ -89,6 +89,8 @@ impl Index for usize {
     }
 }
 
+#[macro_export]
+/// Create new fixed sized Array type 
 macro_rules! fix_array_impl {
     ($index_type:ty, $len:expr) => {
         unsafe impl<T> Array for [T; $len] {
@@ -114,6 +116,8 @@ macro_rules! fix_array_impl {
     };
 }
 
+#[macro_export]
+/// Helper macro to recursively create different sized fixed arrays
 macro_rules! fix_array_impl_recursive {
     ($index_type:ty, ) => ();
     ($index_type:ty, $len:expr, $($more:expr,)*) => (
